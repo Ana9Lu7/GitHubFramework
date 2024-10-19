@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GitTagModel : NSObject
+@interface GitTagModel : NSObject <NSSecureCoding>
 
 @property (nonatomic, strong) NSString *name;
 

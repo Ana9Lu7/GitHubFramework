@@ -9,40 +9,39 @@
 
 @implementation LocalDataSource
 
+- (instancetype)initWithBaseLocalDataSource:(BaseLocalDataSource *)baseLocalDataSource {
+    self = [super init];
+    if (self) {
+        _baseLocalDataSource = baseLocalDataSource;
+    }
+    return self;
+}
+
 + (instancetype)sharedManager {
     static LocalDataSource *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedManager = [[self alloc] init];
+        sharedManager = [[self alloc] initWithBaseLocalDataSource:[BaseLocalDataSource sharedManager]];
     });
     return sharedManager;
 }
 
-- (void)saveUserRepositories:(NSArray *)data forKey:(NSString *)key {
-    NSError *error = nil;
-    NSData *encodedData = [NSKeyedArchiver archivedDataWithRootObject:data requiringSecureCoding:NO error:&error];
-    
-    if (error) {
-        NSLog(@"Error archiving data: %@", error.localizedDescription);
-        return;
-    }
-
-    [[NSUserDefaults standardUserDefaults] setObject:encodedData forKey:key];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+- (void)saveUserRepositories:(NSArray<GitHubRepositoryModel *> *)data forKey:(NSString *)key {
+    [self.baseLocalDataSource saveData:data forKey:key];
 }
 
-- (NSArray *)getRepositoriesWitUsername:(NSString *)username {
-    NSData *encodedData = [[NSUserDefaults standardUserDefaults] objectForKey:username];
-    if (encodedData) {
-        NSError *error = nil;
-        NSArray *data = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSArray class] fromData:encodedData error:&error];
-        if (error) {
-            NSLog(@"Error unarchiving data: %@", error.localizedDescription);
-            return nil;
-        }
-        return data;
-    }
-    return nil;
+- (NSArray<GitHubRepositoryModel *> *)getRepositoriesWitUsername:(NSString *)username {
+    NSSet *allowedClasses = [NSSet setWithObjects:[NSArray class], [GitHubRepositoryModel class], nil];
+    return [self.baseLocalDataSource getDataForKey:username allowedClasses:allowedClasses];
+}
+
+- (void)saveRepositoryTags:(NSArray<GitTagModel *> *)data forKey:(NSString *)key {
+    [self.baseLocalDataSource saveData:data forKey:key];
+}
+
+- (NSArray<GitTagModel *> *)getRepositoryTags:(NSString *)tagUrl {
+    NSSet *allowedClasses = [NSSet setWithObjects:[NSArray class], [GitTagModel class], nil];
+    return [self.baseLocalDataSource getDataForKey:tagUrl allowedClasses:allowedClasses];
 }
 
 @end

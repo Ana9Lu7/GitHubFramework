@@ -1,0 +1,16 @@
+PODS:
+  - GithubFramework (1.0.0)
+
+DEPENDENCIES:
+  - GithubFramework (from `../GithubFramework`)
+
+EXTERNAL SOURCES:
+  GithubFramework:
+    :path: "../GithubFramework"
+
+SPEC CHECKSUMS:
+  GithubFramework: 9fa186cc78f6062242d17474f2f3cba840b3826f
+
+PODFILE CHECKSUM: 64a29a4a21288c0694896edfa9f9ae654142a092
+
+COCOAPODS: 1.15.2

@@ -10,6 +10,8 @@
 
 @interface RemoteDataSource : NSObject
 
+- (instancetype)initWithNetworkManager:(NetworkManager *)networkManager;
+
 + (instancetype)sharedManager;
 
 - (void)getRepositoriesForUser:(NSString *)username completion:(NetworkCompletion)completion;

@@ -23,11 +23,32 @@
 /* Begin PBXFileReference section */
 		334403372CC2C93C00EA105B /* GithubFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GithubFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		334403412CC2C93C00EA105B /* GithubFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		33C6D81B2CC2E91F0071590C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		33C6D9862CC2F8FE0071590C /* Exceptions for "GithubFramework" folder in "GithubFramework" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			privateHeaders = (
+				LocalDataSource/LocalDataSource.h,
+				RemoteDataSource/RemoteDataSource.h,
+				RemoteDataSource/Utils/NetworkManager.h,
+			);
+			publicHeaders = (
+				GithubFramework.h,
+				Models/GitHubRepositoryModel.h,
+				Models/GitTagModel.h,
+			);
+			target = 334403362CC2C93C00EA105B /* GithubFramework */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		334403392CC2C93C00EA105B /* GithubFramework */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				33C6D9862CC2F8FE0071590C /* Exceptions for "GithubFramework" folder in "GithubFramework" target */,
+			);
 			path = GithubFramework;
 			sourceTree = "<group>";
 		};
@@ -62,6 +83,7 @@
 			children = (
 				334403392CC2C93C00EA105B /* GithubFramework */,
 				334403452CC2C93C00EA105B /* GithubFrameworkTests */,
+				33C6D81A2CC2E91F0071590C /* Frameworks */,
 				334403382CC2C93C00EA105B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +95,14 @@
 				334403412CC2C93C00EA105B /* GithubFrameworkTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		33C6D81A2CC2E91F0071590C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33C6D81B2CC2E91F0071590C /* XCTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +258,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -258,6 +289,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

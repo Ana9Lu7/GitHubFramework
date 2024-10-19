@@ -6,16 +6,30 @@
 //
 
 #import "RemoteDataSource.h"
-#import "GithubRepositoryModel.h"
+#import "GitHubRepositoryModel.h"
 #import "GitTagModel.h"
 
+@interface RemoteDataSource ()
+
+@property (nonatomic, strong) NetworkManager *networkManager;
+
+@end
+
 @implementation RemoteDataSource
+
+- (instancetype)initWithNetworkManager:(NetworkManager *)networkManager {
+    self = [super init];
+    if (self) {
+        _networkManager = networkManager;
+    }
+    return self;
+}
 
 + (instancetype)sharedManager {
     static RemoteDataSource *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedManager = [[self alloc] init];
+        sharedManager = [[self alloc] initWithNetworkManager:[NetworkManager sharedManager]];
     });
     return sharedManager;
 }
@@ -24,13 +38,13 @@
     NSString *urlString = [NSString stringWithFormat:@"https://api.github.com/users/%@/repos", username];
     NSURL *url = [NSURL URLWithString:urlString];
     
-    [[NetworkManager sharedManager] getRequestWithURL:url method:@"GET" modelClass:[GithubRepositoryModel class] completion:completion];
+    [self.networkManager getRequestWithURL:url method:@"GET" modelClass:[GitHubRepositoryModel class] completion:completion];
 }
 
 - (void)getTagsForRepository:(NSString *)tagsURL completion:(NetworkCompletion)completion {
     NSURL *url = [NSURL URLWithString:tagsURL];
     
-    [[NetworkManager sharedManager] getRequestWithURL:url method:@"GET" modelClass:[GitTagModel class] completion:completion];
+    [self.networkManager getRequestWithURL:url method:@"GET" modelClass:[GitTagModel class] completion:completion];
 }
 
 @end

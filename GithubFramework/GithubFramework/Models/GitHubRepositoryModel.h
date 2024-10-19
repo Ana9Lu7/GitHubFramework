@@ -1,5 +1,5 @@
 //
-//  Repository.h
+//  GitHubRepositoryModel.h
 //  gitFramework
 //
 //  Created by Ana Luiza on 17/10/24.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GithubRepositoryModel : NSObject
+@interface GitHubRepositoryModel : NSObject <NSSecureCoding>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *tagsURL;

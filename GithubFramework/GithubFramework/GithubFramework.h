@@ -6,6 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GithubFramework/GitTagModel.h>
+#import <GithubFramework/GitHubRepositoryModel.h>
 
 //! Project version number for GithubFramework.
 FOUNDATION_EXPORT double GithubFrameworkVersionNumber;
@@ -22,5 +24,7 @@ FOUNDATION_EXPORT const unsigned char GithubFrameworkVersionString[];
 - (void)fetchRepositoriesForUser:(NSString *)username completion:(void (^)(NSArray *repositories, NSError *error))completion;
 
 - (void)fetchRepositoriesTag:(NSString *)tagsURL completion:(void (^)(NSArray *tags, NSError *error))completion;
+
+- (void)setRemoteDataSource:(id)remoteDataSource localDataSource:(id)localDataSource;
 
 @end

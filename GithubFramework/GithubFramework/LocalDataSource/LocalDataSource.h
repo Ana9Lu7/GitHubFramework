@@ -5,14 +5,23 @@
 //  Created by Ana Luiza on 18/10/24.
 //
 
-#import <Foundation/Foundation.h>
+#import "BaseLocalDataSource.h"
+#import "GithubRepositoryModel.h"
+#import "GitTagModel.h"
 
 @interface LocalDataSource : NSObject
 
+@property (nonatomic, strong) BaseLocalDataSource *baseLocalDataSource;
+
 + (instancetype)sharedManager;
 
-- (void)saveUserRepositories:(NSArray *)data forKey:(NSString *)key;
+- (instancetype)initWithBaseLocalDataSource:(BaseLocalDataSource *)baseLocalDataSource;
 
-- (NSArray *)getRepositoriesWitUsername:(NSString *)key;
+- (void)saveUserRepositories:(NSArray<GitHubRepositoryModel *> *)data forKey:(NSString *)key;
+- (NSArray<GitHubRepositoryModel *> *)getRepositoriesWitUsername:(NSString *)username;
+
+- (void)saveRepositoryTags:(NSArray<GitTagModel *> *)data forKey:(NSString *)key;
+- (NSArray<GitTagModel *> *)getRepositoryTags:(NSString *)tagUrl;
 
 @end
+
