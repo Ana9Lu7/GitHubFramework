@@ -31,6 +31,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			privateHeaders = (
 				LocalDataSource/LocalDataSource.h,
+				LocalDataSource/Utils/BaseLocalDataSource.h,
 				RemoteDataSource/RemoteDataSource.h,
 				RemoteDataSource/Utils/NetworkManager.h,
 			);

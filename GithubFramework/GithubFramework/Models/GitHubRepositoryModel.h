@@ -9,6 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A model representing a git repository.
 @interface GitHubRepositoryModel : NSObject <NSSecureCoding>
 
 @property (nonatomic, strong) NSString *name;

@@ -9,6 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A model representing a git tag.
 @interface GitTagModel : NSObject <NSSecureCoding>
 
 @property (nonatomic, strong) NSString *name;

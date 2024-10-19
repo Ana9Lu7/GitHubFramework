@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^NetworkCompletion)(id _Nullable result, NSError * _Nullable error);
 
+/// A class responsible for handling network requests and responses. This class provides methods to perform GET requests and decode data into specified model classes.
 @interface NetworkManager : NSObject
 
 + (instancetype)sharedManager;

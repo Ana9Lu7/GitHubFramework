@@ -9,6 +9,7 @@
 #import "GithubRepositoryModel.h"
 #import "GitTagModel.h"
 
+/// A class responsible for managing local data storage and retrieval  of GitHub repository and tag information.
 @interface LocalDataSource : NSObject
 
 @property (nonatomic, strong) BaseLocalDataSource *baseLocalDataSource;

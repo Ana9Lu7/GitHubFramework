@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "NetworkManager.h"
 
+/// A class responsible for fetching data from a remote source. This class utilizes the NetworkManager to perform network requests for repositories and tags associated with a GitHub user.
 @interface RemoteDataSource : NSObject
 
 - (instancetype)initWithNetworkManager:(NetworkManager *)networkManager;
